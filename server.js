@@ -55,7 +55,8 @@ const protect = (roles) => {
       if (!roles.includes(decoded.role)) {
         return res.status(403).json({ message: 'Access denied' });
       }
-      req.user = decoded; // Attach the decoded user info to the request
+      req.user = decoded;
+      random // Attach the decoded user info to the request
       next();
     });
   };
