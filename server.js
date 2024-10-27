@@ -1,5 +1,3 @@
-// server.js
-
 const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
@@ -15,7 +13,6 @@ mongoose.connect(process.env.MONGODB_URI)
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.log(err));
 
-// User registration
 app.post('/api/register', async (req, res) => {
   const { username, password, role } = req.body;
 
@@ -56,7 +53,6 @@ const protect = (roles) => {
         return res.status(403).json({ message: 'Access denied' });
       }
       req.user = decoded;
-      random // Attach the decoded user info to the request
       next();
     });
   };
